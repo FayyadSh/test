@@ -14,8 +14,8 @@ const Cart = ({ courses: cartItems, loading, error, closeCart }: TNavCart) => {
       {/* Display the list of cart items */}
       <CartItemsList 
         courses={cartItems} 
-        loading={loading} 
-        error={error} 
+        loading={loading || false} 
+        error={error || null} 
       />
 
       <div className="space-y-4 text-center mt-5">

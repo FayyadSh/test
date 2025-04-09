@@ -1,6 +1,6 @@
 import { collection, getDoc, getDocs } from "firebase/firestore"
 import { NextResponse } from "next/server";
-import { db } from "@/lib/firebase";
+import { db } from "../../../../lib/firebase";
 
 export const dynamic = 'force-static';
 export const revalidate = 10800;

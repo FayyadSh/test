@@ -1,0 +1,61 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark,.dark *));
+
+
+@theme {
+  --color-primary: #01d2cf;
+  --color-background-color: #f0f8ff;
+  --color-background-secondary-color: #dbeffb;
+  --color-background-dark-color: #131317;
+  --color-background-dark-secondary-color: #18181d;
+  --color-light-color: #576268;
+  --color-dark-color: #4b5563;
+
+  --animation-duration-shine: 12s;
+  --animation-timing-shine: linear;
+
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0;
+  }
+  50% {
+    background-position: 1200px;
+  }
+  100% {
+    background-position: 1200px;
+  }
+}
+
+
+@layer utilities {
+  .animate-shine {
+     animation: shine var(--animation-duration-shine) var(--animation-timing-shine) infinite;
+   }
+ }
+
+@layer base {
+  :root {
+    --scrollbar-background-color: #f0f8ff;
+    --scrollbar-color: #bbddf1;
+  }
+
+  .dark {
+    --scrollbar-background-color: #18181d;
+    --scrollbar-color: #32323a;
+  }
+}
+
+button {
+  cursor: pointer;
+}
+
+/*-----------    Scrollbar Style    -----------*/
+
+::-webkit-scrollbar {
+    width: 10px;
+    transition: 1s;
+    background-color: var(--scrollbar-background-color); 
+    scrollbar-color: var(--scrollbar-color);
+}

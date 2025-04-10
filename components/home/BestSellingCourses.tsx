@@ -16,6 +16,7 @@ import { useFetch } from "@/hooks";
 import { TCourse } from "@/types";
 
 const BestSellingCourses = () => {
+  
   const {
     data: bestSellingCourses,
     loading,

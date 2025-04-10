@@ -1,4 +1,3 @@
-// src/actions/auth/googleAuth.ts
 import { signInWithPopup, GoogleAuthProvider } from "@firebase/auth";
 import { auth, db } from "@/lib/firebase";
 import { doc, getDoc, setDoc, collection, addDoc } from "firebase/firestore";

@@ -1,4 +1,3 @@
-// src/actions/auth/githubAuth.ts
 import { signInWithPopup, GithubAuthProvider } from "@firebase/auth";
 import { auth, db } from "@/lib/firebase";
 import { doc, getDoc, setDoc, collection, addDoc } from "firebase/firestore";

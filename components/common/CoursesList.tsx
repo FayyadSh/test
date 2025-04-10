@@ -8,7 +8,7 @@ import { TCoursesList } from "@/types";
 
 const CoursesList = ({ courses, loading, error }: TCoursesList) => {
   return (
-    <div className="w-full h-full flex justify-center items-center">
+    <div className="w-full h-full flex justify-center items-center py-24">
       {courses?.length > 0 ? 
         // Render the list of courses when available
         <Suspense fallback={<Loading height="[50vh]" />}>

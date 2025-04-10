@@ -89,7 +89,7 @@ const NavbarWithoutWrappingBySuspense = () => {
           <div className="flex flex-1 items-center justify-end lg:justify-between">
 
             {/* Navbar links */}
-            <nav className={`flex flex-col absolute lg:relative -top-[320px] gap-1 lg:gap-0 lg:top-11 rounded-b-lg z-30 transition-all ${!showNavbar ? '-mt-80' : 'mt-[390px]'} lg:-mt-2 lg:bg-transparent lg:flex-row text-primary lg:text-light-color lg:items-center text-sm`}>
+            <nav className={`flex flex-col absolute lg:relative -top-[320px] gap-1 lg:gap-0 lg:top-11 rounded-b-lg z-30 transition-all ${!showNavbar ? '-mt-80' : 'mt-[390px]'} lg:-mt-2 lg:bg-transparent lg:flex-row text-light-color lg:items-center text-sm`}>
 
               {/* Home link */}
               <Link className={`${isActive('')} ${showNavbar ? '-right-8' : '-right-[2000px]'} relative h-[100px] lg:h-[15px] text-center bg-background-color w-[300px] dark:bg-background-dark-secondary-color shadow-primary pt-10 shadow-md transition-all duration-200 ease-out opacity-95 lg:shadow-none lg:bg-transparent lg:-top-16 lg:pb-2 lg:w-[70px] lg:dark:bg-transparent font-semibold navlink-clip-path md:clip-none`} href="/">
@@ -150,7 +150,7 @@ const NavbarWithoutWrappingBySuspense = () => {
             {/* Search input */}
             <SearchInput
               otherClasses={`!w-screen -translate-x-14 md:translate-x-0 md:!w-2/3 xl:!w-1/2 absolute md:right-3 ${showSearchBar ? 'top-[34px] opacity-100' : '-top-64 opacity-0'} transition-opacity duration-300 md:-top-4 h-9 text-xs tracking-widest dark:text-gray-400 absolute rounded-none md:rounded-md placeholder-gray-500 pl-6 md:pl-3 border-b border-pirmary/30 md:border-none`}            
-              iconClasses={`max-sm:!-right-56 max-md:!-right-full md:!right-5 top-[40px] md:-top-[10px] opacity-${showSearchBar ? '100' : '0'} transition-all duration-500`}
+              iconClasses={`max-sm:!-right-52 max-md:!-right-full md:!right-5 top-[40px] md:-top-[10px] opacity-${showSearchBar ? '100' : '0'} transition-all duration-150`}
             />
 
             <div className="flex items-center gap-4">
@@ -215,7 +215,7 @@ const NavbarWithoutWrappingBySuspense = () => {
               {/* Hamburger menu for mobile */}
               <button
                 onClick={handleShowNavbar}
-                className="block rounded bg-background-secondary-color p-2.5 dark:bg-background-dark-secondary-color text-primary transition hover:text-dark-color lg:hidden"
+                className="block rounded bg-background-secondary-color p-2.5 dark:bg-background-dark-secondary-color text-primary/70 transition hover:text-dark-color lg:hidden"
               >
                 {showNavbar ? <X /> : <Menu />}
               </button>

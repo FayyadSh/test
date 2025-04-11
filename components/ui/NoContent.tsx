@@ -1,14 +1,18 @@
 'use client'
-// ------------ Lottie ----------------
-// import Lottie from "lottie-react";
+// ------------ Images ----------------
+import EmptyFolderImage from '@/assets/svg/empty-folder.svg';
 // ------------ Components ----------------
-import EmptyBox from '@/assets/lottie/emptyBox.json'
-
+import Image from 'next/image';
 
 const NoContent = ({ text = 'No Courses Avaliable' }: { text?: string}) => {
     return (
         <div className="flex text-gray-300 flex-col items-center justify-center relative w-[70vw] h-[400px] mx-auto">
-            {/* <Lottie animationData={EmptyBox} className='w-[280px]' /> */}
+            <Image
+                src={EmptyFolderImage}
+                width={400}
+                height={400}
+                alt='No content image'
+            />
             <h1 className="text-xl text-light-color font-semibold">
                 {text}
             </h1>

@@ -1,6 +1,6 @@
 # CodeSphere Academy 🚀 
 
-A modern **Next.js 15** application where users can browse, search, and purchase courses. Built with cutting-edge technologies like **TypeScript**, **Tailwind CSS**, **Firebase**, **Nodemailer**, **Stripe**, **Swiper Slider**, and **Context API**. Now enhanced with **React 19 features**, **Server and Client Components**, and **SEO metadata** support.
+A modern **Next.js 15** application where users can browse, search, and purchase courses. Built with cutting-edge technologies like **TypeScript**, **Tailwind CSS**, **Firebase**, **Nodemailer**, **Stripe**, **Swiper Slider**, and **Context API**. and **React 19 features**, **Server and Client Components**, and **SEO metadata** support.
 
 ---
 

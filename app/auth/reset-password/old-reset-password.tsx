@@ -1,7 +1,8 @@
 "use client"; 
 // ------------ Hooks ----------------
 import { useRouter } from "next/navigation"; 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAuth } from "@/context/AuthContext";
 // ------------ Firebase ----------------
 import { auth } from "@/lib/firebase";
 import { EmailAuthProvider, reauthenticateWithCredential, updatePassword } from "@firebase/auth";
@@ -18,6 +19,7 @@ const Page = () => {
   const [error, setError] = useState<string | null>(null); // Stores error messages (if any)
   const [message, setMessage] = useState<string | null>(""); // Stores success messages
 
+  const { user } = useAuth();
   const router = useRouter(); // Router instance for navigation
 
   // Function to handle the password change process
@@ -65,6 +67,12 @@ const Page = () => {
       }
     }
   };
+
+  useEffect(() => {
+    if (!user) {
+      router.push('/auth/unauthenticated');
+    }
+  }, [user, router]);
 
   // JSX for rendering the Change Password form
   return (

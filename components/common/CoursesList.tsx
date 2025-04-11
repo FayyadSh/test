@@ -6,7 +6,7 @@ import { TCoursesList } from "@/types";
 
 const CoursesList = ({ courses, loading, error }: TCoursesList) => {
   return (
-    <div className="w-full h-full flex justify-center items-center py-24">
+    <div className="w-full h-full flex justify-center items-center">
       {courses?.length > 0 ? 
         // Render the list of courses when available
         <div className="grid py-12 grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3 sm:gap-20 md:gap-5">

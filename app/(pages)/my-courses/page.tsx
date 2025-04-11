@@ -13,12 +13,13 @@ const MyCourses = () => {
     const path = usePathname(); // Getting the current pathname
 
     const { orders, loading, error } = useOrders()
-    const { user } = useAuth();
+    const { user, setCallbackUrl } = useAuth();
 
     const router = useRouter();
 
     useEffect(() => {
         if(!user){
+            setCallbackUrl('/my-courses');
             router.push('/auth/unauthenticated');
         }
     }, [user, router]);

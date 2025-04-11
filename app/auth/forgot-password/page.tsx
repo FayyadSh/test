@@ -1,7 +1,8 @@
 "use client";
 // ------------ Hooks ----------------
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
 // ------------ Actions ----------------
 import { forgotPassword } from "@/actions/forgot-password";
 // ------------ Components ----------------
@@ -11,6 +12,7 @@ const Page = () => {
 
   const [state, formAction, isPending ] = useActionState(forgotPassword, undefined);
 
+  const { user } = useAuth();
   // Router to handle navigation
   const router = useRouter();
 
@@ -19,6 +21,12 @@ const Page = () => {
       router.push('/');
     }, 1000)
   }
+
+  useEffect(() => {
+    if (!user) {
+      router.push('/auth/unauthenticated');
+    }
+  }, [user, router]);
 
   return (
     <div className="bg-background-secondary-color dark:bg-background-dark-secondary-color pt-20 flex flex-col justify-center items-center w-full h-full relative">

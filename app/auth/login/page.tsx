@@ -2,6 +2,7 @@
 // ------------ Hooks ----------------
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
 // ------------ Firebase ----------------
 import { signInWithEmailAndPassword } from "@firebase/auth";
 import { auth } from "@/lib/firebase";
@@ -9,6 +10,7 @@ import { auth } from "@/lib/firebase";
 import Link from "next/link";
 import { FormButton } from "@/components/common";
 import { SocialLoginButtons } from "@/components/common";
+import { AuthenticatedUser } from "@/components/ui";
 
 // This component represents the login page for user authentication
 const Page = () => {
@@ -19,8 +21,13 @@ const Page = () => {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading ] = useState(false);
   const [message, setMessage] = useState(""); 
-  const router = useRouter();
 
+  const { user, callbackUrl } = useAuth();
+
+  if(user) return <AuthenticatedUser email={user?.email} />
+
+  const router = useRouter();
+  
   // Function to handle login with email and password
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault(); // Prevent page reload
@@ -43,7 +50,12 @@ const Page = () => {
         });
 
         // Redirect user to the homepage
-        router.push("/");
+
+        if(callbackUrl){
+          router.push(callbackUrl);
+        } else {
+          router.push("/");
+        }
       } else {
         setError("Please verify your email");
       }

@@ -1,8 +1,8 @@
 'use client'
 const Loading = ({ height = '[50vh]' } : {height?: string}) => {
   return (
-    <div className={`h-${height} w-full flex justify-center items-center mx-auto`}>
-      <div className="w-[344px] h-fit overflow-hidden rounded-2xl bg-gray-900/50 backdrop-blur-lg shadow-[0_0_20px_2px] shadow-primary/50 mx-auto">
+    <div className={`h-${height} w-full flex justify-center items-center mx-auto py-20`}>
+      <div className="w-[270px] md:w-[344px] h-fit overflow-hidden rounded-2xl bg-gray-900/50 backdrop-blur-lg shadow-[0_0_20px_2px] shadow-primary/50 mx-auto">
         <div className="flex flex-col gap-4 relative z-10 rounded-lg overflow-hidden">
           <div className="flex flex-col font-mono text-base">
             <div className="flex items-center justify-between min-h-[40px] px-3 rounded-t-md bg-primary dark:bg-[#202425]/50">

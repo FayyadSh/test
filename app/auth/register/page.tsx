@@ -2,11 +2,13 @@
 // ------------ Hooks ----------------
 import { useState, useActionState } from "react";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
 // ------------ Actions ----------------
 import { handleRegister } from "@/actions/register";
 // ------------ Components ----------------
 import { FormButton } from "@/components/common";
 import { SocialLoginButtons } from "@/components/common";
+import { AuthenticatedUser } from "@/components/ui";
 
 const Page = () => {
 
@@ -17,6 +19,10 @@ const Page = () => {
   const [message, setMessage] = useState<string | null>(null);
 
   const router = useRouter(); // Next.js router instance for navigation
+
+  const { user } = useAuth();
+
+  if(user) return <AuthenticatedUser email={user?.email} />
 
   const [state, submitAction, isPending] = useActionState(handleRegister, undefined);
 

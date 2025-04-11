@@ -4,8 +4,23 @@ import DoorHandleImage from '@/assets/svg/door-handle.svg';
 // ------------ Components ----------------
 import Link from 'next/link';
 import Image from 'next/image';
+// ------------ Components ----------------
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/context/AuthContext';
+import { useEffect } from 'react';
 
 const Page = () => {
+
+  const { user } = useAuth();
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if(user) {
+      router.push('/');
+    }
+  }, [user, router]);
+
   return (
     <section className="flex justify-center flex-col items-center pt-32 relative px-6 sm:px-16 lg:px-40 pb-9 bg-background-color dark:bg-background-dark-color h-screen">
 

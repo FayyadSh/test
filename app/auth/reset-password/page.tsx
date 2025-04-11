@@ -1,7 +1,8 @@
 "use client"; 
 // ------------ Hooks ----------------
 import { useRouter } from "next/navigation"; 
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
+import { useAuth } from "@/context/AuthContext";
 // ------------ Actions ----------------
 import { resetPassword } from "@/actions/reset-password";
 // ------------ Components ----------------
@@ -9,16 +10,25 @@ import { FormButton } from "@/components/common";
 
 // Main functional component for the "Change Password" page
 const Page = () => {
-
+  
+  const [state, formAction, isPending ] = useActionState(resetPassword, undefined)
+  
   const router = useRouter(); // Router instance for navigation
 
-  const [state, formAction, isPending ] = useActionState(resetPassword, undefined)
+  const { user } = useAuth();
 
   if(state?.success) {
     setTimeout(() => {
       router.push('/');
     }, 1000)
   }
+
+  useEffect(() => {
+    if (!user) {
+      router.push('/auth/unauthenticated');
+    }
+  }, [user, router]);
+  
   // JSX for rendering the Change Password form
   return (
     <div className="bg-background-secondary-color dark:bg-background-dark-secondary-color pt-20 flex flex-col justify-center items-center w-full h-full relative">

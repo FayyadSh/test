@@ -1,7 +1,8 @@
 "use client";
 // ------------ Hooks ----------------
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
 // ------------ Firebase ----------------
 import { auth } from "@/lib/firebase";
 import { sendPasswordResetEmail } from "@firebase/auth";
@@ -14,6 +15,8 @@ const Page = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
+
+  const { user } = useAuth();
 
   // Router to handle navigation
   const router = useRouter();
@@ -42,6 +45,12 @@ const Page = () => {
     }
   };
 
+  useEffect(() => {
+    if (!user) {
+      router.push('/auth/unauthenticated');
+    }
+  }, [user, router]);
+  
   return (
     <div className="bg-background-secondary-color dark:bg-background-dark-secondary-color pt-20 flex flex-col justify-center items-center w-full h-full relative">
       {/* Main container for the page */}

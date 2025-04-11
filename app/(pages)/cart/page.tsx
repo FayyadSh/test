@@ -1,9 +1,9 @@
-'use client' // Marks this as a Client Component in Next.js
-
+'use client';
 // ------------ Hooks ----------------
 import { usePathname, useRouter } from "next/navigation";
 import { useCart } from '@/context/CartContext';
 import { useAuth } from "@/context/AuthContext";
+import { useEffect } from "react";
 // ------------ Components ----------------
 import { Breadcrumb } from "@/components/ui";
 import { CartItemsList } from "@/components/cart";
@@ -29,16 +29,18 @@ const Cart = () => {
   } = useCart();
 
   // Authentication context
-  const { user } = useAuth();
+  const { user, setCallbackUrl } = useAuth();
 
   // Router for navigation
   const router = useRouter();
 
   // Redirect unauthenticated users to auth page
-  if(!user){
-    router.push('/auth/unauthenticated');
-    return null; // Early return to prevent rendering
-  }
+  useEffect(() => {
+    if(!user){
+      setCallbackUrl('/cart');
+      router.push('/auth/unauthenticated');
+    }
+  }, []);
   
   return (
     /** 

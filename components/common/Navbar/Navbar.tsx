@@ -158,7 +158,7 @@ const NavbarWithoutWrappingBySuspense = () => {
             {/* Search input */}
             <SearchInput
               otherClasses={`!w-screen -translate-x-14 md:translate-x-0 md:!w-2/3 xl:!w-1/2 absolute md:right-3 ${showSearchBar ? 'top-[34px] opacity-100' : '-top-64 opacity-0'} transition-opacity duration-300 md:-top-4 h-9 text-xs tracking-widest dark:text-gray-400 absolute rounded-none md:rounded-md placeholder-gray-500 pl-6 md:pl-3 border-b border-b-primary/30 md:border-none`}            
-              iconClasses={`max-md:!-right-full md:!right-5 top-[40px] md:-top-[10px] opacity-${showSearchBar ? '100' : '0'} ${user || userData ? 'max-sm:!-right-56' : 'max-sm:!-right-52'}  transition-all duration-150`}
+              iconClasses={`max-md:!-right-full md:!right-5 top-[40px] md:-top-[10px] opacity-${showSearchBar ? '100' : '0'} ${user || userData ? 'max-sm:!-right-57' : 'max-sm:!-right-52'}  transition-all duration-150`}
             />
 
             <div className="flex items-center gap-4">

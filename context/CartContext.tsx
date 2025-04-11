@@ -35,7 +35,7 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
   const router = useRouter(); // Next.js router for redirection.
-  const { user, loading: authLoading } = useAuth(); // Access user authentication data and loading state.
+  const { user, loading: authLoading, setCallbackUrl } = useAuth(); // Access user authentication data and loading state.
 
   // Fetch the user's cart using the custom `useFetch` hook.
   const { data, loading, error, reload, setLoading } = useFetch<CartData>(() =>
@@ -53,7 +53,8 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   // Function to add a course to the cart.
   const addToCart = (course: TCourse) => {
     if (!user) {
-      return router.push('/auth/login'); // Redirect to login page if the user is not authenticated.
+      setCallbackUrl(`/course/${course.title}`);
+      return router.push('/auth/unauthenticated'); // Redirect to login page if the user is not authenticated.
     }
     
     setLoading(true);
@@ -78,7 +79,8 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   // Function to remove a course from the cart.
   const removeFromCart = (course: TCourse) => {
     if (!user) {
-      return router.push('/auth/login'); // Redirect to login page if the user is not authenticated.
+      setCallbackUrl(`/course/${course.title}`);
+      return router.push('/auth/unauthenticated'); // Redirect to login page if the user is not authenticated.
     }
     setLoading(true);
     const requestData: TCartAction = {

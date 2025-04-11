@@ -5,9 +5,10 @@ import ErrorImage from '@/assets/svg/error.svg';
 import Image from 'next/image';
 
 
-const Error = ({ error } : { error: Error} ) => {
+const ErrorM = ({ error } : { error: Error} ) => {
+
     return (
-        <div className="flex flex-col bg-background-color dark:bg-background-dark-secondary-color items-center justify-center mx-auto relative w-[70vw] h-[400px]">
+        <div className="flex flex-col bg-background-color dark:bg-background-dark-secondary-color items-center justify-center mx-auto relative w-full md:w-[70vw] h-[400px]">
             <Image
                 src={ErrorImage}
                 width={400}
@@ -21,4 +22,4 @@ const Error = ({ error } : { error: Error} ) => {
     );
 }
 
-export default Error;
+export default ErrorM;

@@ -2,6 +2,7 @@
 // ------------ Components ----------------
 import { useState } from "react"; 
 import { useRouter } from "next/navigation"; 
+import { useAuth } from "@/context/AuthContext";
 // ------------ Firebase ----------------
 import { createUserWithEmailAndPassword, sendEmailVerification } from "@firebase/auth"; 
 import { auth, db } from "@/lib/firebase"; 
@@ -9,7 +10,8 @@ import { collection, addDoc, doc, setDoc } from "firebase/firestore";
 // ------------ Components ----------------
 import { FormButton } from "@/components/common";
 import { SocialLoginButtons } from "@/components/common";
-// ------------ Hooks ----------------
+import { AuthenticatedUser } from "@/components/ui";
+// ------------ types ----------------
 import { FormEvent } from "react";
 
 const Page = () => {
@@ -24,6 +26,10 @@ const Page = () => {
   const [message, setMessage] = useState<string | null>("");
 
   const router = useRouter(); // Next.js router instance for navigation
+
+  const { user } = useAuth();
+
+  if(user) return <AuthenticatedUser email={user?.email} />
 
   // Handle the form submission for email/password registration
   const handleRegister = async (event: FormEvent) => {

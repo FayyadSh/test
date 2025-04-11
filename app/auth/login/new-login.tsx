@@ -2,12 +2,14 @@
 // ------------ Hooks ----------------
 import { useState, useActionState, useEffect} from "react";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
 // ------------ Actions ----------------
 import { handleLogin } from "@/actions/login";
 // ------------ Components ----------------
 import Link from "next/link";
 import { FormButton } from "@/components/common";
 import { SocialLoginButtons } from "@/components/common";
+import { AuthenticatedUser } from "@/components/ui";
 
 // This component represents the login page for user authentication
 const Page = () => {
@@ -16,6 +18,10 @@ const Page = () => {
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState(""); 
 
+  const { user, callbackUrl } = useAuth();
+
+  if(user) return <AuthenticatedUser email={user?.email} />
+
   const router = useRouter();
 
   const [state, submitAction, isPending ] = useActionState(handleLogin, undefined)
@@ -23,7 +29,11 @@ const Page = () => {
   useEffect(() => {
     if(state?.success){
       localStorage.setItem('token', state?.token);
-      router.push('/');
+      if(callbackUrl) {
+        router.push(callbackUrl);
+      } else {
+        router.push('/');
+      }
     }
   }, [state])
 

@@ -52,10 +52,10 @@ const Page = async ({searchParams} : TParams) => {
     const category = (await searchParams).category;
     
     // Format query string for API call
-    const query = title ? `query=${title}` : `category=${category}`;
+    let query = title ? `query=${title}` : `category=${category}`;
     
-    // Normalize query string (note: this line currently doesn't affect the query as it's not assigned)
-    query.toLowerCase().replace('%20', ' ')?.replace('-', ' ');
+    // Normalize query string
+    query = query.toLowerCase().replace('%20', ' ')?.replace('-', ' ');
 
     // Fetch courses based on search query
     const searchResultCourses: TResponse = await CoursesApi.getSearchResultCourses(query) || [];

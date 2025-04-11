@@ -6,6 +6,8 @@ import Breadcrumb from "./Breadcrumb";
 import Loading from "./Loading";
 import SparkleButton from "./SparkleButton";
 import EmailTemplate from "./EmailTemplate";
+import AuthenticatedUser from "./AuthenticatedUser";
+
 
 export {
     GlassEffectCard,
@@ -15,5 +17,6 @@ export {
     Breadcrumb,
     Loading,
     SparkleButton,
-    EmailTemplate
+    EmailTemplate,
+    AuthenticatedUser
 }

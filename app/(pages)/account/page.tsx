@@ -15,7 +15,7 @@ import { BookOpenCheck, ShoppingBasket, MoveRight, ShoppingCart } from 'lucide-r
 const Page = () => {
 
   // Destructuring data and methods from the authentication context
-  const { user, userData, loading, handleLogout } = useAuth();
+  const { user, userData, loading, handleLogout, setCallbackUrl } = useAuth();
 
   // Destructuring orders context
   const { orders } = useOrders();
@@ -40,6 +40,7 @@ const Page = () => {
 
   useEffect(() => {
     if (!user) {
+      setCallbackUrl('/account');
       router.push('/auth/unauthenticated');
     }
   }, []);

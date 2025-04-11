@@ -19,6 +19,8 @@ interface AuthContextProps {
   user: User | null;
   loading: boolean;
   userData: { firstName?: string; lastName?: string } | undefined;
+  callbackUrl: string;
+  setCallbackUrl: React.Dispatch<React.SetStateAction<string>>;
   handleLogout: () => Promise<void>;
 }
 
@@ -41,7 +43,8 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => 
   const [user, setUser] = useState<User | null>(null);
   const [userData, setUserData] = useState<{ firstName?: string; lastName?: string } | undefined>();
   const [loading, setLoading] = useState(true); // Initial loading state
-  
+  const [callbackUrl, setCallbackUrl ] = useState('');
+
   const router = useRouter();
 
   /**
@@ -124,6 +127,8 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => 
     user, 
     userData, 
     loading, 
+    callbackUrl,
+    setCallbackUrl,
     handleLogout 
   };
 

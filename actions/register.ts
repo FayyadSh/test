@@ -5,6 +5,7 @@ import {
 } from "@firebase/auth";
 import { auth, db } from "@/lib/firebase";
 import { doc, setDoc, collection, addDoc } from "firebase/firestore";
+import { validateName, validateEmail, validatePassword, validateConfirmPassword } from "@/validators"; 
 
 export const handleRegister = async (prev: any, formData: FormData) => {
 
@@ -14,16 +15,35 @@ export const handleRegister = async (prev: any, formData: FormData) => {
   const password = formData.get("password") as string;
   const confirmPassword = formData.get("confirmPassword") as string;
 
-  if (password !== confirmPassword) {
-    return {
-      message: null,
-      error: "Passwords do not match",
-    };
+  // Use the validator functions
+  const firstNameValidation = validateName(firstName, "First Name");
+  if (!firstNameValidation.isValid) {
+    return { message: null, error: firstNameValidation.error };
+  }
+
+  const lastNameValidation = validateName(lastName, "Last Name");
+  if (!lastNameValidation.isValid) {
+    return { message: null, error: lastNameValidation.error };
+  }
+
+  const emailValidation = validateEmail(email);
+  if (!emailValidation.isValid) {
+    return { message: null, error: emailValidation.error };
+  }
+
+  const passwordValidation = validatePassword(password);
+  if (!passwordValidation.isValid) {
+    return { message: null, error: passwordValidation.error };
+  }
+
+  const confirmPasswordValidation = validateConfirmPassword(confirmPassword, password);
+  if (!confirmPasswordValidation.isValid) {
+    return { message: null, error: confirmPasswordValidation.error };
   }
 
   try {
-    
-    const userCredential = await createUserWithEmailAndPassword( auth, email, password);
+
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
 
     await sendEmailVerification(user);
@@ -45,7 +65,7 @@ export const handleRegister = async (prev: any, formData: FormData) => {
       success: true,
       message: "Registration successful! Please check your email for verification.",
     };
-    
+
   } catch (err) {
     if (err instanceof Error) {
       return {

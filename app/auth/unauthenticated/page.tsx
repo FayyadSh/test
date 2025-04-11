@@ -1,18 +1,20 @@
 "use client";
-// ------------ Lottie ----------------
-// import Lottie from "lottie-react";
-import Lock from "@/assets/lottie/lock.json";
+// ------------ Image ----------------
+import DoorHandleImage from '@/assets/svg/door-handle.svg';
 // ------------ Components ----------------
 import Link from 'next/link';
+import Image from 'next/image';
 
 const Page = () => {
   return (
     <section className="flex justify-center flex-col items-center pt-32 relative px-6 sm:px-16 lg:px-40 pb-9 bg-background-color dark:bg-background-dark-color h-screen">
 
-      {/* <Lottie 
-        className="w-44 h-44" 
-        animationData={Lock} 
-      /> */}
+      <Image
+        src={DoorHandleImage}
+        width={400}
+        height={400}
+        alt='unauthenticacted image'
+      />
 
       <h1 className="text-3xl font-bold text-center text-primary mb-4">
         Welcome to Our App!

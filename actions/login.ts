@@ -1,16 +1,21 @@
 "use server";
-import { getIdToken, signInWithEmailAndPassword } from "@firebase/auth";
-import { db, auth } from "@/lib/firebase";
+import { signInWithEmailAndPassword } from "@firebase/auth";
+import { auth } from "@/lib/firebase";
+import { validateEmail, validatePassword } from "@/validators"; // استيراد الدوال المساعدة
 
 export const handleLogin = async (prev: any, formData: FormData) => {
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
 
-  if (!email || !password) {
-    return {
-      message: null,
-      error: "Email and password are required.",
-    };
+  // استخدام دوال التحقق
+  const emailValidation = validateEmail(email);
+  if (!emailValidation.isValid) {
+    return { message: null, error: emailValidation.error };
+  }
+
+  const passwordValidation = validatePassword(password);
+  if (!passwordValidation.isValid) {
+    return { message: null, error: passwordValidation.error };
   }
 
   try {
@@ -31,7 +36,7 @@ export const handleLogin = async (prev: any, formData: FormData) => {
 
     return {
       success: true,
-      message: "Login done succefull",
+      message: "Login successful",
       token,
     };
   } catch (err) {

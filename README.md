@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CodeSphere Academy 🚀 
 
-## Getting Started
+A modern **Next.js 15** application where users can browse, search, and purchase courses. Built with cutting-edge technologies like **TypeScript**, **Tailwind CSS**, **Firebase**, **Nodemailer**, **Stripe**, **Swiper Slider**, and **Context API**. Now enhanced with **React 19 features**, **Server and Client Components**, and **SEO metadata** support.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features ✨
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. **Browse Courses**:
+   - List of curated courses with **Swiper Slider** for carousel navigation. 🎡  
+   - View course title, description, duration, and price. 📚
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. **Search Courses**:
+   - Search bar with filtering by title, category, or instructor. 🔍  
+   - Real-time updates using Client Components. ⚡
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. **Add Courses to Cart**:
+   - Cart functionality using **Context API**. 🛒  
+   - Cart persists across pages and sessions. 🧩
 
-## Learn More
+4. **Purchase Courses**:
+   - Integrated with **Stripe** for secure checkout. 💳  
+   - Order confirmation via **Nodemailer** email. 📧
 
-To learn more about Next.js, take a look at the following resources:
+5. **Authentication**:
+   - Firebase-based login/signup. 🔐  
+   - Auth-protected routes and personalized dashboard. 🛡️
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+6. **Database**:
+   - Store and retrieve data from **Firebase Firestore**. 🗄️  
+   - Sync course purchases and user profiles.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+7. **Responsive Design**:
+   - Built with **Tailwind CSS** for a beautiful, responsive UI. 🎨
 
-## Deploy on Vercel
+8. **Dark Theme**:
+   - Toggle between dark/light mode. 🌞🌙  
+   - Theme stored in local storage for session persistence. 💾
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+9. **SEO and Metadata**:
+   - Optimized with `generateMetadata()` in **Next.js App Router** for dynamic SEO. 🧠  
+   - Social previews, title tags, and descriptions are auto-generated. 📈
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+10. **Server and Client Components**:
+    - Modular architecture using **Next.js Server and Client Components**. 🔀  
+    - Heavy data logic and rendering moved to Server Components for better performance.
+
+11. **React 19 Features**:
+    - Utilized **`useOptimistic`** for optimistic UI updates on checkout and course actions. ⚙️  
+    - **`useActionState`** for form submissions and state handling without boilerplate. 🧵
+
+---
+
+## Tech Stack 🛠️
+
+- **Framework**: Next.js 14 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Backend Services**: Firebase (Auth, Firestore)
+- **Payments**: Stripe
+- **Emailing**: Nodemailer
+- **State Management**: Context API + React 19 Hooks
+- **SEO**: `generateMetadata()` from Next.js
+- **Routing**: App Directory Structure (Server/Client Components)
+- **UX Enhancements**: Swiper Slider, Dark Mode
+
+---
+

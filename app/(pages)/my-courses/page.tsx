@@ -3,6 +3,7 @@
 import { usePathname, useRouter } from "next/navigation";
 import { useOrders } from "@/context/OrdersContext";
 import { useAuth } from "@/context/AuthContext";
+import { useEffect } from "react";
 // ------------ Components ----------------
 import { OrdersList } from "@/components/orders";
 import { Breadcrumb } from "@/components/ui";
@@ -16,9 +17,11 @@ const MyCourses = () => {
 
     const router = useRouter();
 
-    if(!user){
-        router.push('/auth/unauthenticated');
-    }
+    useEffect(() => {
+        if(!user){
+            router.push('/auth/unauthenticated');
+        }
+    }, [user, router]);
 
     return (
         <section className="px-6 sm:px-16 lg:px-40 pt-40 md:pt-24 bg-background-color dark:bg-background-dark-secondary-color">

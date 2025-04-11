@@ -13,7 +13,7 @@ const CartItemsList = ({
   removeFromCart, 
 }: TCartItemsList) => {
   return (
-    <div className="relative px-6 sm:px-20 lg:px-40"> {/* Main container with responsive padding */}
+    <div className="relative px-6 sm:px-20 lg:px-20"> {/* Main container with responsive padding */}
       {/* Main cart content */}
       <div className="flex items-center justify-center">
         {cartCourses && cartCourses?.length > 0 ? ( // Check if there are courses in the cart
@@ -28,7 +28,7 @@ const CartItemsList = ({
               ))}
             </ul>
 
-            <div className="mt-8 mb-8 flex px-8 items-center justify-between border-t border-light-color pt-8"> {/* Summary section */}
+            <div className="mt-8 mb-8 flex md:px-8 items-center justify-between border-t border-light-color pt-8"> {/* Summary section */}
               <dl className="flex items-center gap-4 text-dark-color !text-base font-medium"> {/* Description list for total price */}
                 <dt>Total :</dt>
                 <dd>{total} $</dd>
@@ -40,7 +40,7 @@ const CartItemsList = ({
               </Link>
             </div>
 
-            <h2 className="text-light-color pl-8"> {/* Note for users */}
+            <h2 className="text-light-color text-center"> {/* Note for users */}
               Note: All Items Will Be Sent Via Email
             </h2>
           </div>

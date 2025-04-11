@@ -47,7 +47,7 @@ const Footer = () => {
                 </div>
                 <div className="mt-8 text-base leading-6 text-center text-light-color">
                     <p>
-                        © 2021 SomeCompany, Inc. All rights reserved.
+                        © 2025 Code Shpere Academy, Inc. All rights reserved.
                     </p>
 
                     <p className='flex items-center justify-center text-sm text-light-color/60 mt-3 text-center'> 

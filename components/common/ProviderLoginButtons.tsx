@@ -7,8 +7,7 @@ import Image from "next/image";
 // ------------ Hooks ----------------
 import { useRouter } from "next/navigation"; 
 // ------------ Actions ----------------
-import { handleGoogleLogin } from "@/actions/googleLogin"; 
-import { handleGitHubLogin } from "@/actions/githubLogin";
+import { handleGoogleLogin, handleGitHubLogin } from "@/utils"; 
 
 /**
  * Interface defining the props for the SocialLoginButtons component.

@@ -7,9 +7,9 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import { useCart } from "@/context/CartContext";
 // ------------ Utils ----------------
-import ReactDOMServer from "react-dom/server"; // For rendering the email template
+import ReactDOMServer from "react-dom/server";
 // ------------ Components ----------------
-import { EmailTemplate } from "../ui"; // Your email template
+import { EmailTemplate } from "../ui"; 
 // ------------ Types ----------------
 import { TCourse } from "@/types";
 

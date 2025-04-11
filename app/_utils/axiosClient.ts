@@ -1,5 +1,5 @@
 const { default: axios } = require("axios");
-const baseUrl = `https://test-three-rosy-57.vercel.app//api`;
+const baseUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api`;
 
 const axiosClient = axios.create({
     baseURL: baseUrl
